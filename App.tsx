@@ -4,10 +4,13 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { AiChat } from './components/AiChat';
 import { Home } from './pages/Home';
-import { StudyCanada } from './pages/StudyCanada';
+import { CountryGuide } from './pages/CountryGuide';
 import { Programs } from './pages/Programs';
 import { Universities } from './pages/Universities';
+import { Scholarships } from './pages/Scholarships';
 import { Contact } from './pages/Contact';
+import { Team } from './pages/Team';
+import { AiTools } from './pages/AiTools';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -28,10 +31,15 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/study-in-canada" element={<StudyCanada />} />
+            {/* Dynamic Route for Canada, USA, Germany */}
+            <Route path="/study/:countryId" element={<CountryGuide />} />
+            
             <Route path="/programs" element={<Programs />} />
             <Route path="/universities" element={<Universities />} />
+            <Route path="/scholarships" element={<Scholarships />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/ai-tools" element={<AiTools />} />
           </Routes>
         </main>
         <Footer />
