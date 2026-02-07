@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
@@ -31,7 +32,7 @@ const App: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* Dynamic Route for Canada, USA, Germany */}
+            {/* Dynamic Route for Destinations */}
             <Route path="/study/:countryId" element={<CountryGuide />} />
             
             <Route path="/programs" element={<Programs />} />

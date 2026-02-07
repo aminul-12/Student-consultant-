@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { COUNTRY_DETAILS_DATA } from '../constants';
-import { Check, DollarSign, Calendar, Map, Briefcase, BookOpen, GraduationCap } from 'lucide-react';
+import { DollarSign, Briefcase, GraduationCap } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const CountryGuide: React.FC = () => {
@@ -10,7 +11,7 @@ export const CountryGuide: React.FC = () => {
   const data = COUNTRY_DETAILS_DATA[countryId?.toLowerCase() || ''];
 
   if (!data) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" replace />;
   }
 
   return (

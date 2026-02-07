@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { GraduationCap, Menu, X, Globe, Users, BrainCircuit } from 'lucide-react';
+import { Menu, X, Globe, Users, BrainCircuit } from 'lucide-react';
 import { Button } from './ui/Button';
 
 export const Navbar: React.FC = () => {
@@ -20,6 +21,8 @@ export const Navbar: React.FC = () => {
     { name: 'Canada', path: '/study/canada', flag: '🇨🇦' },
     { name: 'USA', path: '/study/usa', flag: '🇺🇸' },
     { name: 'Germany', path: '/study/germany', flag: '🇩🇪' },
+    { name: 'France', path: '/study/france', flag: '🇫🇷' },
+    { name: 'Italy', path: '/study/italy', flag: '🇮🇹' },
   ];
 
   return (
@@ -51,7 +54,6 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
             
-            {/* Country Dropdown / Links */}
             <div className="flex gap-4 border-l border-gray-200 pl-4">
               {countries.map(c => (
                 <Link key={c.name} to={c.path} className="text-xl hover:scale-110 transition-transform" title={`Study in ${c.name}`}>
@@ -73,7 +75,6 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -85,7 +86,6 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100">
           <div className="px-4 pt-2 pb-6 space-y-1">
@@ -105,9 +105,9 @@ export const Navbar: React.FC = () => {
             ))}
              <div className="px-3 py-2">
                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Destinations</div>
-               <div className="flex gap-4">
+               <div className="grid grid-cols-2 gap-2">
                  {countries.map(c => (
-                  <Link key={c.name} to={c.path} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg border border-gray-200 w-full justify-center">
+                  <Link key={c.name} to={c.path} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg border border-gray-200">
                     <span className="text-xl">{c.flag}</span>
                     <span className="text-sm font-medium text-gray-700">{c.name}</span>
                   </Link>
@@ -119,14 +119,9 @@ export const Navbar: React.FC = () => {
                  <BrainCircuit size={18} /> AI Tools
                </div>
              </Link>
-             <Link to="/team" onClick={() => setIsMenuOpen(false)} className="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
-               Project Team
+             <Link to="/contact" onClick={() => setIsMenuOpen(false)} className="block px-3 py-3">
+               <Button fullWidth>Free Consultation</Button>
              </Link>
-             <div className="pt-4 px-3">
-               <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
-                <Button fullWidth>Free Consultation</Button>
-               </Link>
-             </div>
           </div>
         </div>
       )}

@@ -11,7 +11,7 @@ export const Programs: React.FC = () => {
   const [cgpa, setCgpa] = useState<string>('');
   const [maxBudget, setMaxBudget] = useState<string>('');
 
-  const countries = ['All', 'Canada', 'USA', 'Germany'];
+  const countries = ['All', 'Canada', 'USA', 'Germany', 'France', 'Italy'];
   const fields = ['All', 'IT', 'AI', 'Data Science', 'Software Engineering', 'Business', 'Health'];
 
   const filteredPrograms = PROGRAMS.filter(program => {

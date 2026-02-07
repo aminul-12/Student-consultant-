@@ -1,4 +1,4 @@
-export type CountryCode = 'Canada' | 'USA' | 'Germany';
+export type CountryCode = 'Canada' | 'USA' | 'Germany' | 'France' | 'Italy';
 
 export interface University {
   id: string;
@@ -47,23 +47,28 @@ export interface Scholarship {
   amount: string;
   deadline: string;
   eligibility: string;
-  type: 'Merit-based' | 'Need-based' | 'Research' | 'Entrance' | 'DAAD' | 'Assistantship';
+  type: 'Merit-based' | 'Need-based' | 'Research' | 'Entrance' | 'DAAD' | 'Assistantship' | 'DSU' | 'Eiffel';
 }
 
 export interface TeamMember {
   id: string;
+  studentId?: string; // Long academic ID
   name: string;
   role: string;
   gender: 'Male' | 'Female';
   image: string;
+  phone?: string;
+  email?: string;
+  portfolio?: string;
   contributions: string[];
   techResponsibility: string;
   isSupervisor?: boolean;
   designation?: string;
+  department?: string;
 }
 
 export interface CountryDetails {
-  id: string; // 'canada', 'usa', 'germany'
+  id: string; // 'canada', 'usa', 'germany', etc
   name: string;
   flag: string;
   description: string;
@@ -84,4 +89,20 @@ export interface AiAssessmentResult {
     university: string;
     reason: string;
   }[];
+}
+
+export interface ExtractedCvData {
+  fullName?: string;
+  cgpa?: number;
+  ielts?: number;
+  fieldOfStudy?: string;
+  skills?: string[];
+  backgroundSummary?: string;
+  careerGoals?: string;
+  experience?: string[];
+  achievements?: string[];
+  certifications?: string[];
+  languages?: string[];
+  suggestedImprovements?: string[];
+  detectedCountryPreference?: string;
 }

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { UNIVERSITIES } from '../constants';
 import { MapPin, ExternalLink, Globe } from 'lucide-react';
@@ -17,11 +18,11 @@ export const Universities: React.FC = () => {
         <div className="mb-12 text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Partner Universities</h1>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Explore top-ranked institutions in Canada, USA, and Germany.
+            Explore top-ranked institutions in Canada, USA, Germany, France, and Italy.
           </p>
           
-          <div className="flex justify-center gap-2 mt-8">
-            {['All', 'Canada', 'USA', 'Germany'].map(c => (
+          <div className="flex flex-wrap justify-center gap-2 mt-8">
+            {['All', 'Canada', 'USA', 'Germany', 'France', 'Italy'].map(c => (
               <button 
                 key={c}
                 onClick={() => setFilterCountry(c)}
@@ -43,7 +44,7 @@ export const Universities: React.FC = () => {
               <div className="md:w-1/3 h-64 md:h-auto relative">
                 <img src={uni.image} alt={uni.name} className="w-full h-full object-cover" />
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-sm font-bold shadow-sm flex items-center gap-1">
-                   {uni.country === 'Canada' ? '🇨🇦' : uni.country === 'USA' ? '🇺🇸' : '🇩🇪'} Rank #{uni.ranking}
+                   {uni.country === 'Canada' ? '🇨🇦' : uni.country === 'USA' ? '🇺🇸' : uni.country === 'Germany' ? '🇩🇪' : uni.country === 'France' ? '🇫🇷' : '🇮🇹'} Rank #{uni.ranking}
                 </div>
                 <div className="absolute bottom-4 left-4 bg-slate-900/80 text-white backdrop-blur px-3 py-1 rounded-full text-xs font-medium">
                   {uni.type} University
