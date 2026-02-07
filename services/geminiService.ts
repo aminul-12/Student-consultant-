@@ -1,4 +1,4 @@
-import { GoogleGenAI, SchemaType } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 import { AiAssessmentResult } from "../types";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
@@ -120,8 +120,15 @@ export const getProfileAssessment = async (data: { cgpa: string; ielts: string; 
       }
     });
 
-    if (response.text) {
-        return JSON.parse(response.text) as AiAssessmentResult;
+    let jsonStr = response.text;
+    if (jsonStr) {
+      // Clean up markdown code blocks if present
+      if (jsonStr.startsWith('```json')) {
+        jsonStr = jsonStr.replace(/^```json\n/, '').replace(/\n```$/, '');
+      } else if (jsonStr.startsWith('```')) {
+        jsonStr = jsonStr.replace(/^```\n/, '').replace(/\n```$/, '');
+      }
+      return JSON.parse(jsonStr) as AiAssessmentResult;
     }
     throw new Error("Empty response from AI");
   } catch (error) {

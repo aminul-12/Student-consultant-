@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BrainCircuit, FileText, CheckCircle, AlertCircle, Loader2, Award, Briefcase, GraduationCap, AlertTriangle } from 'lucide-react';
+import { BrainCircuit, FileText, CheckCircle, AlertCircle, Loader2, Award, Briefcase, GraduationCap, TriangleAlert } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { generateSOP, getProfileAssessment } from '../services/geminiService';
 import { AiAssessmentResult } from '../types';
@@ -179,7 +179,7 @@ const ProfileAssessmentSection: React.FC = () => {
                    {result.visaRisks && result.visaRisks.length > 0 && (
                      <div className="mt-4">
                        <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1">
-                         <AlertTriangle size={12} className="text-orange-500" /> Potential Risks
+                         <TriangleAlert size={12} className="text-orange-500" /> Potential Risks
                        </h4>
                        <ul className="space-y-1">
                          {result.visaRisks.map((risk, i) => (
